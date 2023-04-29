@@ -2,9 +2,10 @@
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-export function TwitterFollowCard ({ formatUserName, userName, name}) {
+export function TwitterFollowCard ({ formatUserName, userName, name, initialIsFollowing}) {
 
-    const [isFollowing, setIsFollowing] = useState(false);
+    // useState a nivel Componente
+    const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
 
     const cambioTexto = isFollowing ? "Siguiendo" : "Seguir";
     const buttonClassName = isFollowing ? "tw-followCard-button is-following" : "tw-followCard-button";
