@@ -54,6 +54,13 @@ function App() {
     return null
   }
 
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
+  }
+
   // null = No hay ganador, false = Hay empate, true = ganador
   const [winner, setWinner] = useState(null)
 
@@ -75,7 +82,6 @@ function App() {
     // Revisar si hay un ganador
     const newWinner = checkWinner(newBoard)
     if(newWinner) {
-      alert(`El ganador es: ${newWinner}`)
       setWinner(newWinner)
     }
   }
@@ -83,6 +89,7 @@ function App() {
   return (
     <main className='board'>
         <h1>Ta-Te-Ti</h1>
+        <button onClick={resetGame}>Reset</button>
         <section className='game'>
           { //Renderizar cada uno de los Square en el tablero
             board.map((_, index) => {
@@ -103,6 +110,31 @@ function App() {
               {TURNS.O}
             </Square>
         </section>
+
+
+        {
+          winner !== null && (
+            <section className='winner'>
+              <div className='text'>
+                <h2>
+                  {
+                    winner === false ? 'Empate' : 'Ganó'
+                  }
+                  </h2>
+
+                  <header className='win'>
+                    {winner && <Square>{winner}</Square>}
+                  </header>
+
+                  <footer>
+                    <button onClick={resetGame}>Jugar de nuevo</button>
+                  </footer>
+              </div>
+            </section>
+            
+          )
+
+        }
     </main>
   )
 }
