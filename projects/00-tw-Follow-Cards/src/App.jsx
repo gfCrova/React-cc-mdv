@@ -2,30 +2,7 @@
 //import { useState } from 'react'
 import './App.css'
 import { TwitterFollowCard } from './TwitterFollowCard.jsx'
-
-const users = [
-    {
-      userName: "elonmusk",
-      name: "Elon Musk",
-      isFollowing: false
-    },
-    {
-      userName: "midudev",
-      name: "Miguel Ángel Durán",
-      isFollowing: true
-    },
-    {
-      userName: "Martinpdisalvo",
-      name: "Martin Pérez Di Salvo",
-      isFollowing: false
-    },
-    {
-      userName: "leomessi",
-      name: "Leonel Andrés Messi",
-      isFollowing: true
-    }
-  ];
-
+import {users as user} from './data/Users'
 
 export function App () {
   
@@ -37,14 +14,19 @@ export function App () {
   return (
 
     <section className='App'>
-      {/*<TwitterFollowCard formatUserName={format} userName="midudev" name="Miguel Ángel Durán" isFollowing initialIsFollowing={true}/>
+    
+      {/* Método - 1
+      
+      <TwitterFollowCard formatUserName={format} userName="midudev" name="Miguel Ángel Durán" isFollowing initialIsFollowing={true}/>
       <TwitterFollowCard formatUserName={format} userName="leomessi" name="Pable Hernández" isFollowing={false} />
       <TwitterFollowCard formatUserName={format} userName={name} name="Elon Musk" isFollowing />
       <TwitterFollowCard formatUserName={format} userName="vxnder" name="Vanderhart" isFollowing={false} />
-      */}
+      */
       
-      {
-        users.map(({userName, name, isFollowing}) => {
+      }
+
+      { // Método - 2
+        user.map(({userName, name, isFollowing}) => {
           return (
             <TwitterFollowCard
               key={userName}
@@ -55,11 +37,6 @@ export function App () {
           )
         })
       }
-        
-
-      {/*<button onClick={() => setName("giancrova")}>
-        Cambiar Nombre
-    </button>*/}
     
     </section>
   )
